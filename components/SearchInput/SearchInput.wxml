@@ -1,0 +1,6 @@
+<!-- 顶部搜索框 -->
+<view class="search_index">
+    <navigator class="nav_con" target="" url="../../pages/search/index" hover-class="navigator-hover" open-type="navigate">
+        搜索
+    </navigator>
+</view>

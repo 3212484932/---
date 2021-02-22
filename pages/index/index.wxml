@@ -1,0 +1,9 @@
+<!-- index.wxml -->
+<view class="pyg_index">
+    <!-- 顶部搜索页面 开始 -->
+    <SearchInput></SearchInput>
+    <!-- 顶部搜索页面 结束 -->
+    <!-- 轮播图 开始 -->
+    <swiper class=""></swiper>
+    <!-- 轮播图 结束 -->
+</view>
