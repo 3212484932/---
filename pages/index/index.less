@@ -1,0 +1,67 @@
+// 轮播图 开始
+.swiper_warp{
+    .swiper_item{
+        width: 750rpx;
+        height: 340rpx;
+        navigator{
+            height: 100%;
+        }
+        .swiper_con{
+            width: 100%;
+            height: 100%!important;
+        }
+    }
+}
+// 轮播图 结束
+
+// 导航 开始
+.index_cate{
+    display: flex;
+    .cate_con{
+        flex: 1;
+        padding: 20rpx;
+       .cate_image{
+           width: 100%;
+       }
+    }
+}
+// 导航 结束
+
+// 楼层 开始
+.index_floor{
+    padding: 10rpx;
+    .index_group{
+        .floor_title{
+            padding: 10rpx 0;
+            .floor_title_con{
+                width: 100%;
+            }
+        }
+        .floor_con{
+           overflow: hidden;
+           navigator{
+               float: left;
+               width: 33.33%;
+
+               // 后四个超链接
+               &:nth-last-child(-n+4){
+                // 原图的宽高 232 * 386
+                // 232 / 386 = 33.33vm / height
+                // 第一张图片的高度 height:33.33vm * 386 / 232
+                height: 205rpx;
+                border-left: 10rpx solid #fff;
+               }
+               &:nth-child(2),
+               &:nth-child(3){
+                   border-bottom: 10rpx solid #fff;
+               }
+               image{
+                   width: 100%;
+                   height: 100%;
+               }
+           }
+        }
+    }
+
+}
+// 楼层 结束
