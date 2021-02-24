@@ -40,7 +40,7 @@
         "selectedIconPath": "./icons/category-o.png"
       },
       {
-        "pagePath": "pages/goods_list/index",
+        "pagePath": "pages/cart/index",
         "text": "购物车",
         "iconPath": "./icons/cart_20190818_110336.png",
         "selectedIconPath": "./icons/cart-o.png"
