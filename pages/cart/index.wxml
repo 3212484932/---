@@ -1,2 +1,115 @@
-<!--pages/cart/index.wxml-->
-<text>pages/cart/index.wxml</text>
+<!-- 顶部收货地址 开始 -->
+<view class="receive_warp">
+    <!-- 当 appdata 中不存在收货地址 显示添加按钮 -->
+    <view class="address_btn" wx:if="{{!address.userName}}">
+        <button type="primary" plain bindtap="handleChooseAddress">获取收货地址</button>
+    </view>
+    <!-- 当 appdata 中存在收获冬至 显示收货地址信息 -->
+    <view wx:else class="address_info_warp">
+        <view class="address_info">
+            <view class="info_right">
+                <view class="info_name">收货人:
+                    {{address.userName}}</view>
+                <view class="info_location">{{address.all}}</view>
+            </view>
+            <view class="info_phone">{{address.telNumber}}</view>
+        </view>
+    </view>
+</view>
+<!-- 顶部收货地址 结束 -->
+<!-- 购物车内容 开始 -->
+<view class="cart_content">
+    <view class="cart_title">购物车</view>
+    <view class="cart_main">
+        <view class="cart_item">
+            <!-- 复选框 -->
+            <view class="cart_chk_warp">
+                <checkbox-group bindchange="">
+                    <checkbox />
+                </checkbox-group>
+            </view>
+            <!-- 商品图片 -->
+            <navigator class="cart_img_warp" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                <image src="http://image1.suning.cn/uimg/b2c/newcatentries/0070134290-000000000149003877_1_800x800.jpg" mode="widthFix" />
+            </navigator>
+            <!-- 商品信息 -->
+            <view class="cart_info_warp">
+                <view class="goods_name">spike 经典武士大马士革直刀(微型) 户外野营直刀 收藏礼品刀 饰品刀具</view>
+                <view class="goods_price_warp">
+                    <view class="goods_price">￥ 999</view>
+                    <view class="goods_price_tool">
+                        <view class="num_edit">-</view>
+                        <view class="goods_num">10</view>
+                        <view class="num_edit">+</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cart_item">
+            <!-- 复选框 -->
+            <view class="cart_chk_warp">
+                <checkbox-group bindchange="">
+                    <checkbox />
+                </checkbox-group>
+            </view>
+            <!-- 商品图片 -->
+            <navigator class="cart_img_warp" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                <image src="http://image1.suning.cn/uimg/b2c/newcatentries/0070134290-000000000149003877_1_800x800.jpg" mode="widthFix" />
+            </navigator>
+            <!-- 商品信息 -->
+            <view class="cart_info_warp">
+                <view class="goods_name">spike 经典武士大马士革直刀(微型) 户外野营直刀 收藏礼品刀 饰品刀具</view>
+                <view class="goods_price_warp">
+                    <view class="goods_price">￥ 999</view>
+                    <view class="goods_price_tool">
+                        <view class="num_edit">-</view>
+                        <view class="goods_num">10</view>
+                        <view class="num_edit">+</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cart_item">
+            <!-- 复选框 -->
+            <view class="cart_chk_warp">
+                <checkbox-group bindchange="">
+                    <checkbox />
+                </checkbox-group>
+            </view>
+            <!-- 商品图片 -->
+            <navigator class="cart_img_warp" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                <image src="http://image1.suning.cn/uimg/b2c/newcatentries/0070134290-000000000149003877_1_800x800.jpg" mode="widthFix" />
+            </navigator>
+            <!-- 商品信息 -->
+            <view class="cart_info_warp">
+                <view class="goods_name">spike 经典武士大马士革直刀(微型) 户外野营直刀 收藏礼品刀 饰品刀具</view>
+                <view class="goods_price_warp">
+                    <view class="goods_price">￥ 999</view>
+                    <view class="goods_price_tool">
+                        <view class="num_edit">-</view>
+                        <view class="goods_num">10</view>
+                        <view class="num_edit">+</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 购物车内容 结束 -->
+<!-- 购物车底部栏 开始 -->
+<view class="footer_tool">
+    <view class="tool_chk_warp">
+        <checkbox-group>
+            <checkbox>全选</checkbox>
+        </checkbox-group>
+    </view>
+    <view class="tool_center_warp">
+        <view class="goods_price_warp">
+            合计:
+            <text class="goods_price">￥ 999</text>
+        </view>
+        <view class="price_tran_price">包含运费</view>
+    </view>
+    <view class="tool_pay">结算(2)</view>
+</view>
+<!-- 购物车底部栏 结束 -->
