@@ -1,0 +1,163 @@
+page {
+    padding-bottom: 90rpx;
+}
+
+.receive_warp {
+    border-bottom: 1px solid #ccc;
+
+    .address_btn {
+        padding: 20rpx;
+
+        button {
+            width: 60%;
+        }
+    }
+
+    .address_info_warp {
+        padding: 20rpx;
+
+        .address_info {
+            display: flex;
+
+            .info_right {
+                flex: 6;
+            }
+
+            .info_phone {
+                flex: 3;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.cart_content {
+    .cart_title {
+        padding: 20rpx;
+        font-size: 36rpx;
+        color: var(--themeColor);
+        border-bottom: 1px solid currentColor;
+    }
+
+    .cart_main {
+        .cart_item {
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            padding: 10rpx;
+
+            .cart_chk_warp {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .cart_img_warp {
+                flex: 2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                image {
+                    width: 65%;
+                    padding: 10rpx;
+                }
+            }
+
+            .cart_info_warp {
+                flex: 3;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                padding-left: 8rpx;
+
+                .goods_name {
+                    display: -webkit-box;
+                    overflow: hidden;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    color: #666;
+                }
+
+                .goods_price_warp {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .goods_price {
+                        color: var(--themeColor);
+                        font-size: 34rpx;
+                    }
+
+                    .goods_price_tool {
+                        display: flex;
+
+                        .num_edit {
+                            width: 55rpx;
+                            height: 55rpx;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border: 1rpx solid #eee;
+                        }
+
+                        .goods_num {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 0 8rpx;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+.footer_tool {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90rpx;
+    background-color: #fff;
+    display: flex;
+    border-top: 1px solid #ccc;
+
+    .tool_chk_warp {
+        flex: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tool_center_warp {
+        padding-right: 20rpx;
+        flex: 5;
+        text-align: right;
+
+        .goods_price_warp {
+
+            // display: flex;
+            .goods_price {
+                width: 50rpx;
+                font-size: 34rpx;
+                color: var(--themeColor);
+
+            }
+        }
+
+        .price_tran_price {}
+    }
+
+    .tool_pay {
+        flex: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 34rpx;
+        font-weight: 600;
+        color: #fff;
+        background-color: var(--themeColor);
+    }
+}

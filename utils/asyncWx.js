@@ -44,3 +44,40 @@ export const openSetting = () => {
     });
   });
 };
+
+/**
+ * promise 形式 showModal
+ */
+export const showModal = ({ content }) => {
+  return new Promise((resolve, reject) => {
+    wx.showModal({
+      title: "删除",
+      content: content,
+      success: (res) => {
+        resolve(res);
+      },
+      fail: (err) => {
+        reject(err);
+      },
+    });
+  });
+};
+
+/**
+ * promise 形式 showToast
+ */
+export const showToast = ({ title }) => {
+  return new Promise((resolve, reject) => {
+    wx.showToast({
+      title: title,
+      icon: "",
+      duration: 2000,
+      success: (res) => {
+        resolve(res);
+      },
+      fail: (err) => {
+        reject(err);
+      },
+    });
+  });
+};

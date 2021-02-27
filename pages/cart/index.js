@@ -30,9 +30,33 @@
  *    3. 商品对象的选中状态取反
  *    4. 重新填充回data的缓存中
  *    5. 重新计算 总价格 总数量
+ * 9. 商品的全选和取反事件
+ *    1. 全选复选框绑定事件
+ *    2. 获取data中的变量 allChecked
+ *    3. 直接取反 allChecked = !allChecked
+ *    4. 遍历购物车的数组 让里面的选中状态跟随 allChecked 改变而改变
+ *    5. 把购物车中数组 和 allChecked 重新设置回data 把购物车重新设置回缓存中
+ * 10. 商品数量的编辑
+ *    1 + - 按钮绑定同一个点击事件 区分方法 自定义属性
+ *    2 传递被点击的商品的 id
+ *    3 获取data中购物车的数组 来获取需要被修改的 对象
+ *    4 直接修改商品对象的数量 num
+ *      4.1 当num的值 为 1 并且用户点击了 - 号 弹出提示框 提示用户是否删除这个商品
+ *    5 把cart数组重新设置回缓存中 和data 中 this.setCart(cart)
+ * 11. 支付页面的点击事件
+ *    1. 绑定事件函数
+ *    2. 先验证是否有收获地址
+ *    3. 再验证是否有商品
+ *    4. 最后跳转到支付页面
  */
 
-import { getSetting, chooseAddress, openSetting } from "../../utils/asyncWx.js";
+import {
+  getSetting,
+  chooseAddress,
+  openSetting,
+  showModal,
+  showToast,
+} from "../../utils/asyncWx.js";
 Page({
   data: {
     // 地址
@@ -184,5 +208,79 @@ Page({
       allChecked,
     });
     wx.setStorageSync("cart", cart);
+  },
+
+  /**
+   * 设置全选和取反事件处理函数
+   */
+  handleItemAllChecked() {
+    // console.log("11");
+    // 1. 获取data中的变量
+    let { cart, allChecked } = this.data;
+    // 2. 将 allChecked直接取反
+    allChecked = !allChecked;
+    // 3. 通过遍历数组 forEach 遍历修改数据
+    cart.forEach((v) => {
+      v.checked = allChecked;
+    });
+    // 4. 把数组重新添加到缓存中
+    this.setCart(cart);
+  },
+
+  /**
+   * 设置商品的数量
+   */
+  async handleItemNumEdit(e) {
+    // 1. 获取传递过来的参数
+    let { operation, id } = e.currentTarget.dataset;
+    console.log(operation, id);
+    // 2. 获取data中的购物车的数组
+    let { cart } = this.data;
+    // 3. 找到cart中的与传递过来的id相同的数组
+    const index = cart.findIndex((v) => v.goods_id === id);
+    if (cart[index].num === 1 && operation === -1) {
+      // 弹出删除提示框
+      const res = await showModal({ content: "确定要删除吗？" });
+      if (res.confirm) {
+        // 确认 删除商品
+        cart.splice(index, 1);
+        // 加入缓存
+        this.setCart(cart);
+      } else if (res.cancel) {
+        console.log(res.cancel);
+      }
+    } else {
+      // console.log(index);
+      cart[index].num += operation;
+      // console.log(cart[index].num);
+      // 4. 将cart 数组重新设置回缓存中
+      this.setCart(cart);
+    }
+  },
+
+  /**
+   * 支付事件函数
+   */
+  async handlePay() {
+    // 1. 验证收获地址 （先获取收获地址 再验证）
+    const { address, allNum } = this.data;
+    if (!address.userName) {
+      // 弹框提示
+      await showToast({ title: "请添加收货地址" });
+      return;
+    }
+    // 2. 验证是否有商品
+    if (allNum === 0) {
+      await showToast({ title: "请选择商品" });
+      return;
+    }
+    // 3. 条件全部满足 跳转到支付页面
+    wx.navigateTo({
+      url: "/pages/pay/index",
+      success: (result) => {},
+      fail: (err) => {
+        console.log(err);
+      },
+    });
   },
 });
