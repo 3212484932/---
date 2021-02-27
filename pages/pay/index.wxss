@@ -4,12 +4,6 @@ page {
 .receive_warp {
   border-bottom: 1px solid #ccc;
 }
-.receive_warp .address_btn {
-  padding: 20rpx;
-}
-.receive_warp .address_btn button {
-  width: 60%;
-}
 .receive_warp .address_info_warp {
   padding: 20rpx;
 }
@@ -33,12 +27,6 @@ page {
   border-bottom: 1px solid #ccc;
   display: flex;
   padding: 10rpx;
-}
-.cart_content .cart_main .cart_item .cart_chk_warp {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .cart_content .cart_main .cart_item .cart_img_warp {
   flex: 2;
@@ -98,12 +86,6 @@ page {
   background-color: #fff;
   display: flex;
   border-top: 1px solid #ccc;
-}
-.footer_tool .tool_chk_warp {
-  flex: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .footer_tool .tool_center_warp {
   padding-right: 20rpx;

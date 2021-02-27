@@ -1,11 +1,7 @@
 <!-- 顶部收货地址 开始 -->
 <view class="receive_warp">
-    <!-- 当 appdata 中不存在收货地址 显示添加按钮 -->
-    <view class="address_btn" wx:if="{{!address.userName}}">
-        <button type="primary" plain bindtap="handleChooseAddress">获取收货地址</button>
-    </view>
     <!-- 当 appdata 中存在收获冬至 显示收货地址信息 -->
-    <view wx:else class="address_info_warp">
+    <view class="address_info_warp">
         <view class="address_info">
             <view class="info_right">
                 <view class="info_name">收货人:
@@ -19,51 +15,29 @@
 <!-- 顶部收货地址 结束 -->
 <!-- 购物车内容 开始 -->
 <view class="cart_content">
-    <view class="cart_title">购物车</view>
+    <view class="cart_title">支付</view>
     <view class="cart_main">
-        <block wx:if="{{cart.length !== 0}}">
-            <view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
-                <!-- 复选框 -->
-                <view class="cart_chk_warp">
-                    <checkbox-group data-id="{{item.goods_id}}" bindchange="handleItemChange">
-                        <checkbox checked="{{item.checked}}" />
-                    </checkbox-group>
-                </view>
-                <!-- 商品图片 -->
-                <navigator class="cart_img_warp" target="" url="" hover-class="navigator-hover" open-type="navigate">
-                    <image src="{{item.goods_small_logo}}" mode="widthFix" />
-                </navigator>
-                <!-- 商品信息 -->
-                <view class="cart_info_warp">
-                    <view class="goods_name">{{item.goods_name}}</view>
-                    <view class="goods_price_warp">
-                        <view class="goods_price">￥ {{item.goods_price}}</view>
-                        <view class="goods_price_tool">
-                            <view bindtap="handleItemNumEdit" data-id="{{item.goods_id}}" data-operation="{{-1}}" class="num_edit">
-                                -
-                            </view>
-                            <view class="goods_num">{{item.num}}</view>
-                            <view bindtap="handleItemNumEdit" data-id="{{item.goods_id}}" data-operation="{{1}}" class="num_edit">
-                                +
-                            </view>
-                        </view>
+        <view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
+            <!-- 商品图片 -->
+            <navigator class="cart_img_warp" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                <image src="{{item.goods_small_logo}}" mode="widthFix" />
+            </navigator>
+            <!-- 商品信息 -->
+            <view class="cart_info_warp">
+                <view class="goods_name">{{item.goods_name}}</view>
+                <view class="goods_price_warp">
+                    <view class="goods_price">￥ {{item.goods_price}}</view>
+                    <view class="goods_price_tool">
+                        <view class="goods_num">× {{item.num}}</view>
                     </view>
                 </view>
             </view>
-        </block>
-        <block wx:else>
-            <image mode="widthFix" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3559485588,3499568517&fm=15&gp=0.jpg" />
-        </block>
+        </view>
     </view>
 </view>
 <!-- 购物车内容 结束 -->
 <!-- 购物车底部栏 开始 -->
 <view class="footer_tool">
-    <view class="tool_chk_warp">
-        <checkbox-group bindchange="handleItemAllChecked">
-            <checkbox checked="{{allChecked}}">全选</checkbox>
-        </checkbox-group>
-    </view>
     <view class="tool_center_warp">
         <view class="goods_price_warp">
             合计:
@@ -71,6 +45,6 @@
         </view>
         <view class="price_tran_price">包含运费</view>
     </view>
-    <view class="tool_pay" bindtap="handlePay">结算({{allNum}})</view>
+    <view class="tool_pay">支付({{allNum}})</view>
 </view>
 <!-- 购物车底部栏 结束 -->
