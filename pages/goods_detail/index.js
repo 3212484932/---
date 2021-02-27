@@ -78,12 +78,14 @@ Page({
     if (index === -1) {
       // 不存在 第一次添加
       this.GoodsInfo.num = 1;
+      // 给GoodsInfo 添加 checked属性 表示选中复选框
       this.GoodsInfo.checked = true;
       cart.push(this.GoodsInfo);
     } else {
       // 存在 商品数量++
       cart[index].num++;
     }
+
     // 把购物车重新添加回缓存中
     wx.setStorageSync("cart", cart);
     // 弹窗提示
