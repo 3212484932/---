@@ -45,6 +45,6 @@
         </view>
         <view class="price_tran_price">包含运费</view>
     </view>
-    <view class="tool_pay">支付({{allNum}})</view>
+    <view class="tool_pay" bindtap="handleOrderPay">支付({{allNum}})</view>
 </view>
 <!-- 购物车底部栏 结束 -->
