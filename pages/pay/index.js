@@ -82,7 +82,7 @@ Page({
       }
       // console.log("已经存在 token");
       // 2. 准备请求头参数
-      const header = { Authorization: token };
+      // const header = { Authorization: token };
       // 商品总价格
       const order_price = this.data.allPrice;
       // 商品的收货地址
@@ -105,7 +105,6 @@ Page({
         url: "/my/orders/create",
         method: "POST",
         data: orderParams,
-        header: header,
       });
 
       console.log(
@@ -119,7 +118,6 @@ Page({
       const pay = await request({
         url: "/my/orders/req_unifiedorder",
         method: "POST",
-        header,
         data: order_number,
       });
       console.log(pay + "报错属于正常 因为 没有企业微信");

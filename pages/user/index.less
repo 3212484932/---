@@ -1,0 +1,118 @@
+page{
+    background-color: #edece8;
+    // position: relative;
+}
+.user_info_warp{
+    height: 45vh;
+    overflow: hidden;
+    background-color: var(--themeColor);
+    position: relative;
+    .user_bg_warp{
+        position: relative;
+        .user_bg_img{
+            height: 50vh;
+            // 高斯模糊
+            filter: blur(10rpx);
+        }
+    }
+    .user_info_con{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 20%;
+        text-align: center;
+        .user_info_avatar{
+            width: 150rpx;
+            height: 150rpx;
+            border-radius: 50%;
+        }
+        .user_info_name{
+            color: #fff;
+            font-size: 36rpx;
+            margin-top: 35rpx;
+        }
+    }
+    .user_info_login{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 30%;
+        font-size: 40rpx;
+        color: #fff;
+        border: 2rpx solid #fff;
+        padding: 20rpx 40rpx;
+        border-radius: 20rpx;
+    }
+}
+.user_content{
+    position: relative;
+    .user_main{
+        margin-bottom: 100rpx;
+        color: #666;
+        background-color: #fff;
+        position: absolute;
+        left: 50%;
+        width: 90%;
+        transform: translateX(-50%);
+        top: -40rpx;
+        .user_shoping_list{
+            background-color: #fff;
+            padding: 10rpx 0;
+            display: flex;
+            navigator {
+                flex: 1;
+                text-align: center;
+                .list_num{
+                    color: var(--themeColor);
+                }
+                .list_text{
+                    color: #666;
+                    font-size: 26rpx;
+                }
+            }
+        }
+        .user_order_warp{
+            border-top: 20rpx solid #edece8;
+            .orders_title{
+                padding: 16rpx;
+                font-size: 28rpx;
+                color: #444;
+                border-bottom: 4rpx solid #edece8;
+            }
+            .order_con{
+                display: flex;
+                navigator{
+                    flex: 1;
+                    text-align: center;
+                    padding: 15rpx;
+                    .iconfont{
+                        color: var(--themeColor);
+                        font-size: 45rpx;
+                        margin-bottom: 6rpx;
+                    }
+                    .order_text{
+                        color: #666;
+                    }
+                }
+            }
+        }
+        .user_address{
+            border-top: 20rpx solid #edece8;
+            padding: 20rpx;
+        }
+        .app_related_warp{
+            border-top: 20rpx solid #edece8;
+            .related_item{
+                padding: 20rpx;
+            }
+            .contact{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+        .app_recommed{
+            border-top: 20rpx solid #edece8;
+            padding: 20rpx;
+        }
+    }
+}
