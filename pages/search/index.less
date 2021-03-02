@@ -1,0 +1,38 @@
+page{
+    background-color: #dedede;
+    position: relative;
+}
+.search_content{
+    .search_warp{
+        margin: 20rpx;
+        display: flex;
+        height: 70rpx;
+        .search_text {
+            background-color: #fff;
+            padding-left: 15rpx;
+            flex: 1;
+            height: 100%;
+        }
+        .search_cancel {
+            margin-left: 20rpx;
+            width: 110rpx;
+            font-size: 26rpx;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .search_result{
+        margin: 20rpx;
+        .result_item{
+            padding: 10rpx;
+            background-color: #fff;
+            border-bottom: 1rpx solid #ccc;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}

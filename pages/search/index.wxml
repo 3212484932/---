@@ -1,2 +1,13 @@
-<!--pages/search/index.wxml-->
-<text>pages/search/index.wxml</text>
+<view class="search_content">
+    <!-- 搜索区域 -->
+    <view class="search_warp">
+        <input type="text" value="{{inpValue}}" class="search_text" placeholder="请输入搜索内容" bindinput="handleInput"></input>
+        <button hidden="{{!isFocus}}" class="search_cancel" bindtap="handleCancel">取消</button>
+    </view>
+    <!-- 列表搜展示区域 -->
+    <view class="search_result">
+        <navigator url="/pages/goods_detail/index?goods_id={{item.goods_id}}" wx:for="{{goods}}" wx:key="goods_id" class="result_item">
+            {{item.goods_name}}
+        </navigator>
+    </view>
+</view>
