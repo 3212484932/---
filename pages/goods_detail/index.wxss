@@ -34,6 +34,9 @@
 .detail_text .detail_row .detail_collect .iconfont {
   color: #444;
 }
+.detail_text .detail_row .detail_collect .icon-shoucang {
+  color: #ffa500;
+}
 .detail_text .detail_row .detail_collect .collect_text {
   color: #444;
   font-size: 24rpx;
