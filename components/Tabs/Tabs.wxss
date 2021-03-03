@@ -7,8 +7,9 @@
   justify-content: center;
   align-items: center;
   padding: 15px 0;
+  border-bottom: 4rpx solid #ccc;
 }
 .tabs .tabs_title .active {
   color: var(--themeColor);
-  border-bottom: 5rpx solid currentColor;
+  border-bottom: 4rpx solid currentColor;
 }

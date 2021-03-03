@@ -1,2 +1,29 @@
-<!--pages/feedback/index.wxml-->
-<text>pages/feedback/index.wxml</text>
+<!-- 加载自定义tabs组件 开始 -->
+<!-- 监听自定义事件 -->
+<Tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsItemChange">
+    <view class="fb_main">
+        <view class="fb_title">问题的种类</view>
+        <view class="fb_question_warp">
+            <text>功能建议</text>
+            <text>购买遇到问题</text>
+            <text>性能问题</text>
+            <text>其他</text>
+        </view>
+        <view class="fb_con_warp">
+            <textarea value="" bindinput="handleTextInput" placeholder="请描述您的问题"></textarea>
+            <view class="con_tip">
+                <button bindtap="handleChooseImg">+</button>
+                <view class="tip_img_warp" wx:for="{{chooseImg}}" wx:key="*this" bindtap="handleRemoveImg" data-index="{{index}}">
+                    <UpImg src="{{item}}"></UpImg>
+                </view>
+            </view>
+        </view>
+        <view class="fb_submit">
+            <button bindtap="handleSubmitCon">
+                <icon class="submit_icon" type="success_no_circle" size="23" color="#fff"></icon>
+                提交
+            </button>
+        </view>
+    </view>
+</Tabs>
+<!-- 加载自定义tabs组件 结束 -->
