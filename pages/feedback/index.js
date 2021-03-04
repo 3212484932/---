@@ -4,6 +4,24 @@
  *    2. 获取图片的路径 数组
  *    3. 把图片的路径 存储到 data 变量中
  *    4. 页面就可以根据 图片数组 进行循环显示 自定义组件
+ * 2. 删除对应的图片
+ *    1. 首先给元素添加点击事件 并且传递 data-index值
+ *    2. 在事件中获取 index 索引的值
+ *    3. 再获取 图片数组
+ *    4. 根据索引删除对应的图片  chooseImg,splice(index, 1)
+ * 3. 点击提交按钮事件
+ *    1. 获取文本域中的内容 类似于输入框的获取 在 标签上绑定 value 属性  在事件 bindinput 中传递 e 就可以获取
+ *        1. data中定义变量 表示输入框的 内容
+ *        2. 文本域绑定输入事件 事件触发的时候 把输入框的值 存入到变量中
+ *    2. 对这些内容 校验合法值
+ *    3. 验证通过 用户选择图片 上传专门的图片到服务器 返回图片的外网连接
+ *        1. 遍历数组
+ *        2. 挨个上传
+ *        3. 自己再维护图片的数组 存放 图片上传后的外网连接
+ *    4. 文本域和外网图片路径 一起提交到服务器 前端模拟 不会发送请求到服务器
+ *    5. 清空当前页面
+ *    6. 返回上一页
+ *
  */
 
 // pages/feedback/index.js
@@ -117,22 +135,62 @@ Page({
       return;
     }
     // 3. 准备上传图片到专门的服务器
-    chooseImg.forEach((v, i) => {
-      wx.uploadFile({
-        // 图片要上传到哪里
-        url: "https://www.7000mi.com/tianlong/#histroy",
-        // 被上传图片的路径
-        filePath: v,
-        // 上传图片的名称 后台来获取文件 file
-        name: "file",
-
-        formData: {},
-        success: (result) => {
-          console.log(result);
-        },
-        fail: () => {},
-        complete: () => {},
-      });
+    // 弹窗提示 上传中
+    wx.showLoading({
+      title: "正在上传中",
+      mask: true,
     });
+
+    // 判断是否只是提交了文本
+    if (chooseImg.lengeh !== 0) {
+      // 有图片内容
+      chooseImg.forEach((v, i) => {
+        wx.uploadFile({
+          // 图片要上传到哪里
+          url: "https://www.7000mi.com/tianlong/#histroy",
+          // 被上传图片的路径
+          filePath: v,
+          // 上传图片的名称 后台来获取文件 file
+          name: "file",
+
+          formData: {},
+          success: (result) => {
+            console.log(result);
+            // 字符串解析
+            const { url } = JSON.parse(result.data).url;
+            this.upLoadImages.push(url);
+            console.log(this.upLoadImages);
+
+            // 所有的图片都上传完成了以后才会触发事件 将数据提交到后台
+            if (i === chooseImg.length - 1) {
+              // 关闭提示框
+              wx.hideLoading();
+              // 返回上一个页面
+              wx.navigateBack({
+                delta: 1,
+              });
+              // 打印模拟上传
+              console.log("把文本和图片提交到后台");
+              // 提交成功 重置页面
+              this.setData({
+                valText: "",
+                chooseImg: [],
+              });
+            }
+          },
+          fail: (err) => {
+            console.log(err);
+          },
+        });
+      });
+    } else {
+      // 只是提交了文本
+      console.log("只是提交了文本");
+      // 返回上一个页面  关闭提示框
+      wx.hideLoading();
+      wx.navigateBack({
+        delta: 1,
+      });
+    }
   },
 });

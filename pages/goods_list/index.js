@@ -63,7 +63,8 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    this.QueryParams.cid = options.cid;
+    this.QueryParams.cid = options.cid || "";
+    this.QueryParams.query = options.query || "";
 
     // 调用获取商品列表的事件函数
     this.getDoodsList();

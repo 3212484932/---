@@ -15,8 +15,8 @@
                让图片的宽度等于100%  宽度自适应
             5. 给轮播图添加 下面的图片 功能 -->
         <swiper indicator-dots autoplay="{{true}}" circular interva="2000">
-            <swiper-item class="swiper_item" wx:for="{{swiperList}}" wx:key="goods_id" autoplay="{{true}}">
-                <navigator>
+            <swiper-item class="swiper_item" wx:for="{{swiperList}}" wx:key="goods_id">
+                <navigator url="/pages/category/index" open-type="switchTab">
                     <image class="swiper_con" src="{{item.image_src}}" mode="widthFix" />
                 </navigator>
             </swiper-item>
@@ -25,7 +25,7 @@
     <!-- 轮播图 结束 -->
     <!-- 导航图 开始 -->
     <view class="index_cate">
-        <navigator class="cate_con" wx:for="{{cateList}}" wx:key="name">
+        <navigator class="cate_con" wx:for="{{cateList}}" wx:key="*this" url="/pages/category/index" open-type="switchTab">
             <image class="cate_image" src="{{item.image_src}}" mode="widthFix" />
         </navigator>
     </view>
@@ -39,7 +39,7 @@
             </view>
             <!-- 内容 -->
             <view class="floor_con">
-                <navigator wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="name">
+                <navigator wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="*this" url="/pages/goods_list/index">
                     <image mode="{{index2=== 0 ? 'widthFix':'scaleToFill'}}" src="{{item2.image_src}}" />
                 </navigator>
             </view>
